@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.*;
 import static java.lang.Math.sqrt;
 
@@ -7,17 +8,25 @@ public class Similarity {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter text 1");
+        System.out.println("Enter text 1:");
         String text1 = scanner.nextLine();
         System.out.println();
 
-        System.out.println("Enter text 2");
+        System.out.println("Enter text 2:");
         String text2 = scanner.nextLine();
         System.out.println();
 
         double cosineSimilarity = findCosineSimilarity(text1, text2);
 
-        System.out.println("The similarity is: " + cosineSimilarity);
+        DecimalFormat df;
+
+        if(cosineSimilarity != 0){
+            df = new DecimalFormat(".##%");
+            System.out.println("The similarity is: " + df.format(cosineSimilarity));
+        }
+        else{
+            System.out.println("The similarity is: 0%");
+        }
     }
 
     public static double findCosineSimilarity(String text1, String text2){
